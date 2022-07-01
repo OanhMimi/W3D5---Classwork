@@ -1,3 +1,5 @@
+require "byebug"
+
 class PolyTreeNode
 
     attr_reader :parent, :children, :value
@@ -57,8 +59,19 @@ class PolyTreeNode
     end
 
     def bfs(target)
-        return self if self.value == target
-
+        arr=[self]
+        cur_node = self
+        until arr.empty?         
+            cur_node = arr.shift
+            cur_node.children.each do |ele|
+                arr << ele
+                
+            end
+            if cur_node.value == target
+                return cur_node
+            end
+        end
+        nil        
     end
 
    
