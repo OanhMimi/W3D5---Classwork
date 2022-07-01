@@ -40,6 +40,27 @@ class PolyTreeNode
         end
     end
 
+    def dfs(target)
+
+        # return self if self.value == target
+        # self.children.inject(nil) do |acc,ele|
+        #     ele.dfs(target)
+        # end
+        arr = nil
+        return self if self.value == target
+        return nil if self.children.empty?
+        self.children.each do |ele|
+            arr = ele.dfs(target)
+            return arr unless arr.nil?
+        end
+        nil
+    end
+
+    def bfs(target)
+        return self if self.value == target
+
+    end
+
    
 end
 
